@@ -65,6 +65,21 @@ void solveSudoku(vector<string> &sud) {
 	solve(sud, board, 0, 0);
 }
 
+void printSudoku(vector<string> &sud) {
+	for(int i = 0; i < 9; ++i) {
+		for(int j = 0; j < 9; ++j) {
+			cout << sud[i][j] << ' ';
+			if(j % 3 == 2 and j != 8) {
+				cout << "| ";
+			}
+		}
+		cout << '\n';
+		if(i % 3 == 2 and i != 8) {
+			cout << "------+-------+------\n";
+		}
+	}
+}
+
 int main() {
 	vector<string> sud = {
 		"53..7....",
@@ -78,15 +93,9 @@ int main() {
 		"....8..79"
 	};
 	cout << "Initial board\n";
-	for(string s : sud) {
-		cout << s << '\n';
-	}
-	cout << '\n';
+	printSudoku(sud);
 	solveSudoku(sud);
-	cout << "Solved board\n";
-	for(string s : sud) {
-		cout << s << '\n';
-	}
-	cout << '\n';
+	cout << "\nSolved board\n";
+	printSudoku(sud);
 	return 0;
 }
